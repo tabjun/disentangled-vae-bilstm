@@ -1,0 +1,40 @@
+# Time series generator parameters
+median : 60
+outlier_err : 8
+inliers_size : 1900
+outliers_size : 100
+
+# Data labeling parameters
+if_estimators : 100
+if_random_state : 42 
+if_contamination : 'auto' 
+kd_algo : 'auto'
+kd_kernel : 'gaussian'
+kd_metric : 'euclidean'
+kd_score : 0.1
+svm_nu : 0.1
+svm_kernel : 'rbf'
+svm_gamma : 'auto'
+sw_window_percentage : 3
+sw_std : 3
+
+# Data split and preparation parameters
+train_delimiter: 1600 
+validation_delimiter: 1800
+sequence_length : 10
+
+# Model parameters
+n_features : 1
+latent_space_dimension : 4
+optimizer : 'adam'
+vae_n_units : 64
+beta : 3
+es_patience : 100
+batch_size : 32 
+validation_split : 0.2
+n_epochs : 1200
+
+n_embeddings_in : 2
+bilstm_n_units : 32
+max_norm : 3
+dropout_rate : 0.2
