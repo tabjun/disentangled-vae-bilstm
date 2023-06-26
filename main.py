@@ -94,6 +94,7 @@ if __name__ == '__main__':
     vae.compile(optimizer = optimizer)
 
     es = EarlyStopping(monitor = "val_loss", patience = config['es_patience'], mode = "min")
+    print("Training Beta-VAE...")
     vae.fit(train_X, batch_size=config['batch_size'], validation_split=config['validation_split'], 
                      epochs=config['n_epochs'], shuffle=False, callbacks = [es])
     
@@ -132,6 +133,7 @@ if __name__ == '__main__':
     bilstm_model.compile(optimizer = optimizer, loss = MeanAbsoluteError(), metrics = [RootMeanSquaredError()])
 
     mc = ModelCheckpoint('vae_lstm_anomalydetection.h5', monitor='val_loss', mode='min', save_best_only=True, verbose=1)
+    print("Training BiLSTM backend...")
     history = bilstm_model.fit(emb_train_X, emb_train_y, validation_data=(emb_validation_X,emb_validation_y), 
                                batch_size=config['batch_size'], epochs=config['n_epochs'],verbose=1,callbacks=[es,mc])
     # Load saved model
